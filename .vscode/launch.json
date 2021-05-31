@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Voigtdacs2021Application",
+            "request": "launch",
+            "mainClass": "Voigtdacs2021Application",
+            "projectName": "my-app"
+        },
+        {
+            "type": "java",
             "name": "Launch App",
             "request": "launch",
             "cwd": "${workspaceFolder}",
@@ -10,6 +17,16 @@
             "mainClass": "com.mycompany.app.App",
             "args": "",
             "projectName": "my-app"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Voigtdacs2021Application<my-app>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.univille.voigtdacs2021.Voigtdacs2021Application",
+            "projectName": "my-app",
+            "args": ""
         }
     ]
 }
