@@ -2,11 +2,13 @@ package br.univille.voigtdacs2021.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,7 +22,16 @@ public class Product {
     private float preco;
     @Temporal(value = TemporalType.DATE)
     private Date dataRegistro;
-    
+
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    private Category categoria;
+
+    public Category getCategoria() {
+        return categoria;
+    }
+    public void setCategoria(Category categoria) {
+        this.categoria = categoria;
+    }
     public long getId() {
         return id;
     }
