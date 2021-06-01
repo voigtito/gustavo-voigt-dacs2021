@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Product {
+public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -24,12 +24,12 @@ public class Product {
     private Date dataRegistro;
 
     @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
-    private Category categoria;
+    private Categoria categoria;
 
-    public Category getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
-    public void setCategoria(Category categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
     public long getId() {
