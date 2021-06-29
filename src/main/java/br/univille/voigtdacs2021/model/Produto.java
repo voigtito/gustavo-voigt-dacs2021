@@ -1,5 +1,6 @@
 package br.univille.voigtdacs2021.model;
 
+
 import java.util.Date;
 
 import javax.persistence.CascadeType;

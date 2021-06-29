@@ -1,12 +1,17 @@
 package br.univille.voigtdacs2021.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,6 +26,10 @@ public class Venda {
     @Column(length = 15)
     private String cupom;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "venda_id")
+    private List<ItemVenda> colItemVenda = new ArrayList<ItemVenda>();
+    
     public long getId() {
         return id;
     }
