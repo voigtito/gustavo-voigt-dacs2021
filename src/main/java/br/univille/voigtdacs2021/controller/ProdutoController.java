@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -48,42 +51,19 @@ public class ProdutoController extends HttpServlet {
   }
 
   @GetMapping("/novo")
-  public ModelAndView novo() {
+  public ModelAndView novo(@ModelAttribute Produto produto) {
     return new ModelAndView("produto/form");
   }
 
-  // @GetMapping("/save")
-  // public WebServlet ae() {
-  //   return new ModelAndView("produto/form");
-  // }
+  @PostMapping(params = "form")
+  public ModelAndView salvar(Produto produto) {
+    service.save(produto);
+    return new ModelAndView("redirect:/produto");
+  }
 
-  // @WebServlet("ae")
-  // public class Teste extends HttpServlet {
-
-  //   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-  //       throws ServletException, IOException {
-  //     // read form fields
-  //     String nome = request.getParameter("nome");
-  //     String preco = request.getParameter("preco");
-
-  //     System.out.println("nome: " + nome);
-  //     System.out.println("preco: " + preco);
-
-  //     // do some processing here...
-
-  //     // get response writer
-  //     PrintWriter writer = response.getWriter();
-
-  //     // build HTML code
-  //     String htmlRespone = "<html>";
-  //     htmlRespone += "<h2>Your username is: " + nome + "<br/>";
-  //     htmlRespone += "Your password is: " + preco + "</h2>";
-  //     htmlRespone += "</html>";
-
-  //     // return response
-  //     writer.println(htmlRespone);
-  //   }
-
-  // }
+  @GetMapping(value = "/alterar/{id}")
+  public ModelAndView alterar(@PathVariable("id") Produto produto) {
+    return new ModelAndView("produto/form", "produto", produto);
+  }
 
 }
