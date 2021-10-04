@@ -27,6 +27,16 @@
             "mainClass": "br.univille.voigtdacs2021.Voigtdacs2021Application",
             "projectName": "my-app",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Voigtdacs2021Application<gustavo-voigt-dacs2021>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.univille.voigtdacs2021.Voigtdacs2021Application",
+            "projectName": "gustavo-voigt-dacs2021",
+            "args": ""
         }
     ]
 }
