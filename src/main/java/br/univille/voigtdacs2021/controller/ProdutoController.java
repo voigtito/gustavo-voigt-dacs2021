@@ -33,46 +33,46 @@ public class ProdutoController {
     private FornecedorService fornecedorService;
 
     @GetMapping
-    public ModelAndView index(){
+    public ModelAndView index() {
 
         List<Produto> listaProdutos = service.getAllProdutos();
 
-        return new ModelAndView("produto/index","listaProdutos", listaProdutos);
+        return new ModelAndView("produto/index", "listaProdutos", listaProdutos);
     }
 
     @GetMapping("/novo")
-    public ModelAndView novo(@ModelAttribute Produto produto){
-        HashMap<String,Object> dados = new HashMap<>();
+    public ModelAndView novo(@ModelAttribute Produto produto) {
+        HashMap<String, Object> dados = new HashMap<>();
 
-        dados.put("produto",produto);
+        dados.put("produto", produto);
         List<Categoria> listaCategorias = categoriaService.getAllCategorias();
-        dados.put("listaCategorias",listaCategorias);
-        List<Fornecedor> listaFornecedor  = fornecedorService.getAllFornecedores();
-        dados.put("listaFornecedor",listaFornecedor);
+        dados.put("listaCategorias", listaCategorias);
+        List<Fornecedor> listaFornecedor = fornecedorService.getAllFornecedores();
+        dados.put("listaFornecedor", listaFornecedor);
         return new ModelAndView("produto/form", dados);
     }
 
     @PostMapping(params = "form")
-    public ModelAndView save(Produto produto){
+    public ModelAndView save(Produto produto) {
         service.save(produto);
         return new ModelAndView("redirect:/produto");
     }
 
     @GetMapping(value = "/alterar/{id}")
-    public ModelAndView alterar(@PathVariable("id") Produto produto){
+    public ModelAndView alterar(@PathVariable("id") Produto produto) {
 
-        HashMap<String,Object> dados = new HashMap<>();
-        dados.put("produto",produto);
+        HashMap<String, Object> dados = new HashMap<>();
+        dados.put("produto", produto);
         List<Categoria> listaCategorias = categoriaService.getAllCategorias();
-        dados.put("listaCategorias",listaCategorias);
+        dados.put("listaCategorias", listaCategorias);
         List<Fornecedor> listaFornecedor = fornecedorService.getAllFornecedores();
-        dados.put("listaFornecedor",listaFornecedor);
+        dados.put("listaFornecedor", listaFornecedor);
 
-        return new ModelAndView("produto/form",dados);
+        return new ModelAndView("produto/form", dados);
     }
 
     @GetMapping(value = "/delete/{id}")
-    public ModelAndView delete(@PathVariable("id") Produto produto){
+    public ModelAndView delete(@PathVariable("id") Produto produto) {
         service.delete(produto);
         return new ModelAndView("redirect:/produto");
     }
